@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Conversion Example Two</title>
+    <style>
+
+        .textbox,
+        .button {
+            background-color: #ddeddd;
+            border: .2cm;
+            color: rgb(0, 0, 0);
+            padding: 12px 12px;
+            text-align: center;
+            border: #231a23;
+            border-style: outset;
+            text-decoration: none;
+            display: inline;
+            font-size: 16px;
+            font-weight: bold;
+            margin: 2px 2px;
+            cursor: pointer;
+            width: 32%;
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+        }
+        .textbox:active,
+        .button:active{
+            background-color: rgb(49, 224, 81)
+        }
+        .textbox:focus,
+        .button:focus{
+            background-color: rgb(49, 224, 81)
+        }
+           
+    
+        .textbox2{
+            background-color:black;
+            border: .2cm;
+            color:ghostwhite;
+            padding: 12px 12px;
+            text-align: center;
+            border:white;
+            border-style:groove;
+            border-radius: 0;
+            text-decoration: none;
+            display: inline;
+            font-size: 16px;
+            font-weight: bold;
+            margin: 2px 2px;
+            cursor: pointer;
+            width: 32%;
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+        }
+      
+        hr{
+            width: 90%;
+            background-color:black;
+            border: 0;
+            height: 4px;
+            
+        }
+
+        table {
+            width: 100%;
+            text-align: center;
+            background-color:rgb(27, 93, 141);
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            
+            border: 4px solid;
+            border-radius: 4%;
+            
+        }
+
+        h1,
+        p,td{
+            color: rgba(255, 255, 255, 0.694);
+            letter-spacing: 0px;
+        }
+        input, textarea {
+        -webkit-appearance: none;
+        border-radius: 0;
+        }
+    </style>
+
+</head>
+<body><form id ="form">
+        <table class="table" align="center">
+                <tr><td colspan="2"><h1>Javascript Conversion Calculator</h1><h4>By Todd Sharrard</h4></td></tr>
+                <Tr><Td colspan="2"><hr class="hr"></Td></Tr>
+                <Tr><Td>To convert °F to °C, subtract 32 and multiply by .5556. <br>
+                    To convert °C to °F, multiply by 1.8 and add 32.</Td></Tr>
+                <tr>
+                    
+                   
+                    <td><input type="button" id="button1" class="button" value="Fahrenheit (°F) to Celius (°C)" onclick="dispFtoC();"/>
+                        <input type="button" id="button2" class="button" value="°C to °F" onclick="dispCtoF();"/>
+                    </td>
+                   
+                    <td rowspan="6">Enter Units:<br><br><input type="text" class="textbox" value="" id="txtValueToConvert" onclick="clearInput()"><br>
+                        <p id="txtValueWithUnits"></p><input type="text" class="textbox2" value="" id="txtResult"><br><br>
+                        
+                        
+                    </td>
+                </tr>
+                <Tr><Td><hr></Td></Tr>
+                <Tr><Td>To convert feet to meters, multiply the unit by 0.304 <br>
+                    To convert feet to meters, divide the unit by 0.304</Td></Tr>
+                <tr>
+                    <td>
+                        <input type="button" id="button3" class="button" value="Feet (ft) to Meters (m)" onclick="dispFtoM();"/>
+                        <input type="button" id="button4" class="button"  value="Meters (m) to Feet (ft)" onclick="dispMtoF();"/>
+                    </td>
+                </tr>
+                <Tr><Td><hr></Td></Tr>
+                <Tr><Td>To convert cm to in divide centimeters by 2.54. <br>
+                    To convert in to cm multiply inches by 0.39.</Td></Tr>
+                <tr>
+                    <td>
+                        <input type="button" id="button5" class="button" value="Centimeters (cm) to Inches (in)" onclick="dispCtoI();"/>
+                        <input type="button" id="button6" class="button" value="Inches to Centimeters" onclick="dispItoC();"/>
+                    </td> 
+                </tr>
+                <Tr><Td><hr></Td></Tr>
+                <Tr><Td>To convert lbs to kg, multiply lbs by 0.45359237 kg. <br>
+                    To convert from kg to lbs, multiply by 2.2</Td></Tr>
+                <tr>
+                    <td>
+                        <input type="button" id="button7" class="button" value="Kilograms to Pounds" onclick="dispKtoP();"/>
+                        <input type="button" id="button8" class="button" value="Pounds to Kilograms" onclick="dispPtoK();"/></td>
+                </tr>
+                <tr><td colspan="2"><hr></td></tr>
+
+            </table>
+        </form>
+       
+        
+
+        <script>
+
+            /*  this function resets the colour of the buttons back to orginal css values
+             *  and clears all data from the form
+             */
+
+             document.getElementById('txtResult').readOnly = true;
+
+             function clearInput() {
+                
+                    document.getElementById("form").reset();
+                    var withUnits = document.getElementById('txtValueWithUnits');
+                    withUnits.innerHTML = "";
+                   
+            }
+
+            /* There are eight functions below to do the various conversions
+             * once buton is selecte the background colour and font weight will change
+             * as well the output is reduced to 2 decimal places
+             */
+            
+
+
+            /* this funciton converts fernihiet to celiius */
+            function dispFtoC() {
+                var txtbox = document.getElementById('txtValueToConvert');
+                var para = document.getElementById('txtResult');
+                para.value = ((txtbox.value - 32) * .5556).toFixed(2) + "°C";
+                var withUnits = document.getElementById('txtValueWithUnits');
+                withUnits.innerHTML = txtbox.value + "°Fahrenheit is";
+                
+            }
+
+            /* this funciton converts celious to fernihiet */
+            function dispCtoF() {
+                var txtbox = document.getElementById('txtValueToConvert');
+                var para = document.getElementById('txtResult');
+                para.value = ((txtbox.value * 1.8) + 32).toFixed(2) + "°F";
+                var withUnits = document.getElementById('txtValueWithUnits');
+                withUnits.innerHTML = txtbox.value + "° Celsius is"; 
+            }
+
+            /*  this funciton converts feet to meters */
+            function dispFtoM() {
+                var txtbox = document.getElementById('txtValueToConvert');
+                var para = document.getElementById('txtResult');
+                para.value = (txtbox.value * 0.34).toFixed(2) + " m";
+                var withUnits = document.getElementById('txtValueWithUnits');
+                withUnits.innerHTML = txtbox.value + " Feet is";
+            }
+
+            /*  this funciton converts meters to feet */
+            function dispMtoF() {
+                var txtbox = document.getElementById('txtValueToConvert');
+                var para = document.getElementById('txtResult');
+                para.value = (txtbox.value * 3.2804).toFixed(2) + " ft";
+                var withUnits = document.getElementById('txtValueWithUnits');
+                withUnits.innerHTML = txtbox.value + " Meters is";
+            }
+
+            /*  this funciton converts centimeters to inches */
+            function dispCtoI() {
+                var txtbox = document.getElementById('txtValueToConvert');
+                var para = document.getElementById('txtResult');
+                para.value = (txtbox.value / 2.54).toFixed(2) + " in";
+                var withUnits = document.getElementById('txtValueWithUnits');
+                withUnits.innerHTML =" Centimeters is";
+            }
+
+            /*  this funciton converts inches to centimeters */
+            function dispItoC() {
+                var txtbox = document.getElementById('txtValueToConvert');
+                var para = document.getElementById('txtResult');
+                para.value = (txtbox.value * 2.54).toFixed(2) + " cm";
+                var withUnits = document.getElementById('txtValueWithUnits');
+                withUnits.innerHTML = " Inches is";
+
+            }
+
+            /*  this funciton converts kilos to pounds */
+            function dispKtoP() {
+                var txtbox = document.getElementById('txtValueToConvert');
+                var para = document.getElementById('txtResult');
+                para.value = (txtbox.value * 2.2).toFixed(2) + " lbs";
+                var withUnits = document.getElementById('txtValueWithUnits');
+                withUnits.innerHTML = " Kilograms is";
+
+            }
+
+            /*  this funciton converts pounds to kilos */
+            function dispPtoK() {
+                var txtbox = document.getElementById('txtValueToConvert');
+                var para = document.getElementById('txtResult');
+                para.value = (txtbox.value * 0.45359237).toFixed(2) + " kg";
+                var withUnits = document.getElementById('txtValueWithUnits');
+                withUnits.innerHTML = " Pounds is";
+
+            }
+        </script>
+    </body>
+</html>
